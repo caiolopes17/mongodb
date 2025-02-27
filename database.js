@@ -1,53 +1,56 @@
 /**
- * Modulo de conexão com banco de dados
+ * Módulo de conexão com o banco de dados
  * Uso do framework mongoose
  */
 
-//Importação do mongoose
+// importação do mongoose
 const mongoose = require('mongoose')
 
-// Configuração do banco de dados
-// IP/Link do Servidor, Autenticação
+// configuração do banco de dados
+// ip/link do servidor, autenticação 
 // ao final da url definir o nome do banco de dados
 // exemplo: /dbclientes
-const url = 'mongodb+srv://admin:123Senac@cluster0.lfstp.mongodb.net/dbclientes'
+const url = ''
 
-// Validação (evitar a abertura de varias conexões)
+// validação (evitar a abertura de várias conexões)
 let conectado = false
 
-// Método para conectar com banco de dados
+// método para conectar com o banco de dados
 const conectar = async () => {
-    // Se não estiver conectado
-    if(!conectado) {
-    // Conectado com o banco de dados
-    try {
-        await mongoose.connect(url) //conectar
-        conectado = true //Setar a variável
-        console.log("MongoDB Conectado")
-    } catch (error) {
-        console.log(error)      
-    }
+    // se não estiver conectado
+    if (!conectado) {
+        //conectar com o banco de dados
+        try {
+            await mongoose.connect(url) //conectar
+            conectado = true //setar a variável
+            console.log("MongoDB conectado")
+        } catch (error) {
+            //tratamento de exceções especificas
+            if(error.code = 110000) {
+                console.log(`Erro: O CPF ${cpfCli} já está cadastrado `)
+            }else {
+             console.log(error)
 
+            }
+           
+        }
     }
-
 }
 
-// Método para desconectar do banco de dados
+// método para desconectar do banco de dados
 const desconectar = async () => {
-    // Se estiver conectado
-    if(conectado) {
-    // Desconectar
-    try {
-        await mongoose.disconnect(url) // Desconectar
-        conectado = false //Setar a variável
-        console.log("MongoDB Desconectado")     
-    } catch (error) {
-        console.log(error)
-        
-    }
-
+    // se estiver conectado
+    if (conectado) {
+        // desconectar
+        try {
+            await mongoose.disconnect(url) //desconectar
+            conectado = false //setar a variável
+            console.log("MongoDB desconectado")
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 
-// Exportar para o main os métodos conectar e desconectar
-module.exports = {conectar, desconectar}
+//exportar para o main os métodos conectar e desconectar
+module.exports = { conectar, desconectar }

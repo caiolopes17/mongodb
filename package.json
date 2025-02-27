@@ -8,15 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caiolopes17/mongodb.git"
+    "url": "git+https://github.com/professorjosedeassis/mongodb.git"
   },
-  "author": "Caio Lopes",
+  "author": "Professor José de Assis",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/caiolopes17/mongodb/issues"
+    "url": "https://github.com/professorjosedeassis/mongodb/issues"
   },
-  "homepage": "https://github.com/caiolopes17/mongodb#readme",
+  "homepage": "https://github.com/professorjosedeassis/mongodb#readme",
   "dependencies": {
-    "mongoose": "^8.10.1"
+    "mongoose": "^8.10.1",
+    "string-similarity": "^4.0.4"
   }
 }
